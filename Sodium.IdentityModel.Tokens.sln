@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sodium.IdentityModel.Tokens", "src\Sodium.IdentityModel.Tokens\Sodium.IdentityModel.Tokens.csproj", "{FDDF596A-DA45-4272-90E7-63767FDD4AB9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sodium.IdentityModel.Tokens.Tests", "test\Sodium.IdentityModel.Tokens.Tests\Sodium.IdentityModel.Tokens.Tests.csproj", "{BF4BB6A5-4426-4E16-88A2-930B1F914E62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDDF596A-DA45-4272-90E7-63767FDD4AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDDF596A-DA45-4272-90E7-63767FDD4AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDDF596A-DA45-4272-90E7-63767FDD4AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDDF596A-DA45-4272-90E7-63767FDD4AB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF4BB6A5-4426-4E16-88A2-930B1F914E62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF4BB6A5-4426-4E16-88A2-930B1F914E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF4BB6A5-4426-4E16-88A2-930B1F914E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF4BB6A5-4426-4E16-88A2-930B1F914E62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {901C098D-ADDE-414C-9D2F-78350100B922}
+	EndGlobalSection
+EndGlobal
