@@ -22,14 +22,7 @@ namespace Sodium.IdentityModel.Tokens
             return new SodiumSecurityKey(publicKey);
         }
 
-        private SodiumSecurityKey()
-        {
-            CryptoProviderFactory.CustomCryptoProvider = new SodiumCryptoProvider();
-            PublicKey = null!;
-        }
-
         private SodiumSecurityKey(byte[] publicKey)
-            : this()
         {
             if (publicKey.Length != PublicKeyLength)
                 throw new ArgumentException($"PublicKey needs to have a length of {PublicKeyLength} bytes.");
@@ -38,7 +31,6 @@ namespace Sodium.IdentityModel.Tokens
         }
 
         private SodiumSecurityKey(byte[] privateKey, byte[] publicKey)
-            : this()
         {
             if (privateKey.Length != PrivateKeyLength)
                 throw new ArgumentException($"PrivateKey needs to have a length of {PrivateKeyLength} bytes.", nameof(privateKey));
