@@ -19,6 +19,7 @@
   <PropertyGroup>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
