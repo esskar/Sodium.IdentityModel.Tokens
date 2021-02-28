@@ -10,7 +10,7 @@ state-of-the-art Sodium/NaCl [Networking and Cryptography library][nacl] by [Dan
 
 ## Installation
 
-```
+```shell
 dotnet add package Sodium.IdentityModel.Tokens
 ```
 
@@ -20,7 +20,7 @@ dotnet add package Sodium.IdentityModel.Tokens
 
 First, you need to create a private/public key pair.
 
-```
+```csharp
 using Sodium;
 
 var keyPair = PublicKeyAuth.GenerateKeyPair();
@@ -33,13 +33,13 @@ The public key will be used to verify your signed tokens. Access it via `keyPair
 
 Create a security key from the private key
 
-```
+```csharp
 var securityKey = SodiumSecurityKey.FromPrivateKey(privateKey);
 ```
 
 Create a signing credentials using the just created security key. 
 
-```
+```csharp
 var credentials = new SigningCredentials(securityKey, SodiumAlgorithms.EdDsa)
 {
     CryptoProviderFactory = new CryptoProviderFactory
@@ -51,7 +51,7 @@ var credentials = new SigningCredentials(securityKey, SodiumAlgorithms.EdDsa)
 
 Build your token based on the current identity and write it with a `JwtSecurityTokenHandler`
 
-```
+```powershell
 var tokenHandler = new JwtSecurityTokenHandler();
 
 var claims = new List<Claim>
