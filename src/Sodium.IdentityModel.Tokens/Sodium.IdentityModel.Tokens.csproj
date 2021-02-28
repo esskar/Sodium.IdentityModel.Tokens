@@ -3,6 +3,17 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Sascha Kiefer</Authors>
+    <Company>Sascha Kiefer</Company>
+    <Description>Includes types that provide support for Sodium/Nacl SecurityTokens, Cryptographic operations: Signing, Verifying Signatures.</Description>
+    <Copyright>Copyright © 2021</Copyright>
+    <PackageLicenseFile></PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/esskar/Sodium.IdentityModel.Tokens</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/esskar/Sodium.IdentityModel.Tokens</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>sodium;nacl;jwt;tokens;identitymodels</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sodium.IdentityModel.Tokens
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sodium.IdentityModel.Tokens.Tests", "test\Sodium.IdentityModel.Tokens.Tests\Sodium.IdentityModel.Tokens.Tests.csproj", "{BF4BB6A5-4426-4E16-88A2-930B1F914E62}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CF3D878A-AD28-481A-9E39-05E86C73D8E1}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
