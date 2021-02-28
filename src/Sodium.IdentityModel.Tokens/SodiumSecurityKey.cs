@@ -5,38 +5,56 @@ namespace Sodium.IdentityModel.Tokens
 {
     public sealed class SodiumSecurityKey : AsymmetricSecurityKey, IDisposable
     {
+        private const int PrivateKeyLength = 64;
+        private const int PublicKeyLength = 32;
+
         public static SodiumSecurityKey FromPrivateKey(byte[] privateKey)
         {
-            if (privateKey == null)
-                throw new ArgumentNullException(nameof(privateKey));
+            if (privateKey.Length != PrivateKeyLength)
+                throw new ArgumentException($"PrivateKey needs to have a length of {PrivateKeyLength} bytes.", nameof(privateKey));
 
             var publicKey = PublicKeyAuth.ExtractEd25519PublicKeyFromEd25519SecretKey(privateKey);
             return new SodiumSecurityKey(privateKey, publicKey);
         }
 
+        public static SodiumSecurityKey FromPublicKey(byte[] publicKey)
+        {
+            return new SodiumSecurityKey(publicKey);
+        }
+
         private SodiumSecurityKey()
         {
             CryptoProviderFactory.CustomCryptoProvider = new SodiumCryptoProvider();
+            PublicKey = null!;
         }
 
-        public SodiumSecurityKey(byte[] publicKey)
+        private SodiumSecurityKey(byte[] publicKey)
             : this()
         {
-            PublicKey = publicKey ?? throw new ArgumentNullException(nameof(publicKey));
+            if (publicKey.Length != PublicKeyLength)
+                throw new ArgumentException($"PublicKey needs to have a length of {PublicKeyLength} bytes.");
+
+            PublicKey = publicKey;
         }
 
-        public SodiumSecurityKey(byte[] privateKey, byte[] publicKey)
+        private SodiumSecurityKey(byte[] privateKey, byte[] publicKey)
             : this()
         {
-            PrivateKey = privateKey ?? throw new ArgumentNullException(nameof(privateKey));
-            PublicKey = publicKey ?? throw new ArgumentNullException(nameof(publicKey));
+            if (privateKey.Length != PrivateKeyLength)
+                throw new ArgumentException($"PrivateKey needs to have a length of {PrivateKeyLength} bytes.", nameof(privateKey));
+
+            if (publicKey.Length != PublicKeyLength)
+                throw new ArgumentException($"PublicKey needs to have a length of {PublicKeyLength} bytes.", nameof(publicKey));
+
+            PrivateKey = (byte[])privateKey.Clone();
+            PublicKey = publicKey;
         }
 
         public string Curve => SodiumAlgorithms.Ed25519;
 
         public byte[] PublicKey { get; }
 
-        internal byte[] PrivateKey { get; }
+        internal byte[]? PrivateKey { get; private set; }
 
         public override int KeySize => PublicKey.Length;
 
@@ -52,6 +70,7 @@ namespace Sodium.IdentityModel.Tokens
                 return;
 
             Array.Clear(PrivateKey, 0, PrivateKey.Length);
+            PrivateKey = null;
         }
     }
 }

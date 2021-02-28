@@ -7,31 +7,33 @@ namespace Sodium.IdentityModel.Tokens.Tests
     public class SodiumCryptoProviderTests
     {
         private SodiumCryptoProvider _provider;
+        private SodiumSecurityKey _key;
 
         [SetUp]
         public void Initialize()
         {
             _provider = new SodiumCryptoProvider();
+            _key = SodiumSecurityKey.FromPublicKey(Convert.FromBase64String("T/2hPBHWHSuVaOVL7AbqWTaOhIdIgwh2ReZOXpZTQi4="));
         }
 
         [Theory]
         [TestCase(SodiumAlgorithms.EdDsa)]
         public void IsSupportedAlgorithm_ReturnsTrue_WhenAlgorithmIsSupported(string algorithm)
-            => Assert.IsTrue(_provider.IsSupportedAlgorithm(algorithm, new SodiumSecurityKey(Array.Empty<byte>())));
+            => Assert.IsTrue(_provider.IsSupportedAlgorithm(algorithm, _key));
 
         [Theory]
         [TestCase("eddsa")]
         [TestCase("EDDSA")]
         [TestCase("EdDsA")]
         public void IsSupportedAlgorithm_ReturnsFalse_WhenAlgorithmIsNotSupported(string algorithm)
-            => Assert.IsFalse(_provider.IsSupportedAlgorithm(algorithm, new SodiumSecurityKey(Array.Empty<byte>())));
+            => Assert.IsFalse(_provider.IsSupportedAlgorithm(algorithm, _key));
 
         [Theory]
         [TestCase("eddsa")]
         [TestCase("EDDSA")]
         [TestCase("EdDsA")]
         public void Create_ThrowsNotSupportedException_WhenAlgorithmIsNotSupported(string algorithm)
-            => Assert.Throws<NotSupportedException>(() => _provider.Create(algorithm, new SodiumSecurityKey(Array.Empty<byte>())));
+            => Assert.Throws<NotSupportedException>(() => _provider.Create(algorithm, _key));
 
         [Test]
         public void Create_ThrowsNotSupportedException_WhenNoKeyIsSet()
@@ -44,7 +46,7 @@ namespace Sodium.IdentityModel.Tokens.Tests
         [Test]
         public void Create_ReturnsSodiumSignatureProvider_WhenKeyAndAlgorithmIsSetCorrectly()
         {
-            var actual = _provider.Create(SodiumAlgorithms.EdDsa, new SodiumSecurityKey(Array.Empty<byte>()));
+            var actual = _provider.Create(SodiumAlgorithms.EdDsa, _key);
             Assert.IsInstanceOf<SodiumSignatureProvider>(actual);
         }
 

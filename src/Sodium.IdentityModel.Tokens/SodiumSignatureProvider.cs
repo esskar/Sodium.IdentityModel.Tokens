@@ -12,7 +12,6 @@ namespace Sodium.IdentityModel.Tokens
 
         public override bool Verify(byte[] input, byte[] signature)
             => PublicKeyAuth.VerifyDetached(signature, input, ((SodiumSecurityKey)Key).PublicKey);
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

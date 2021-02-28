@@ -23,7 +23,7 @@ namespace Sodium.IdentityModel.Tokens
                 disposable.Dispose();
         }
 
-        private static SodiumSecurityKey GetSecurityKey(string algorithm, params object[] args)
+        private static SodiumSecurityKey? GetSecurityKey(string algorithm, params object[] args)
         {
             if (algorithm == SodiumAlgorithms.EdDsa && args.FirstOrDefault() is SodiumSecurityKey key)
                 return key;

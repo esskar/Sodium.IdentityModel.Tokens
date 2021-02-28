@@ -18,7 +18,7 @@ namespace Sodium.IdentityModel.Tokens.Tests
             "T/2hPBHWHSuVaOVL7AbqWTaOhIdIgwh2ReZOXpZTQi4=")]
         public void Verify_ReturnsTrue_ForValidSignatures(string text, string signature, string publicKey)
         {
-            var key = new SodiumSecurityKey(Convert.FromBase64String(publicKey));
+            var key = SodiumSecurityKey.FromPublicKey(Convert.FromBase64String(publicKey));
             var provider = new SodiumSignatureProvider(key, SodiumAlgorithms.EdDsa);
             var verified = provider.Verify(Encoding.UTF8.GetBytes(text), Convert.FromBase64String(signature));
             Assert.IsTrue(verified);
