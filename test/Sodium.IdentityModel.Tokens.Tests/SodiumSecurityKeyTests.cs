@@ -33,13 +33,6 @@ namespace Sodium.IdentityModel.Tokens.Tests
         }
 
         [Test]
-        public void FromPublicKey_Sets_CurveToEd25519()
-        {
-            var key = SodiumSecurityKey.FromPublicKey(PublicKey);
-            Assert.AreEqual(SodiumAlgorithms.Ed25519, key.Curve);
-        }
-
-        [Test]
         public void FromPublicKey_HasNoPrivateKey()
         {
             var key = SodiumSecurityKey.FromPublicKey(PublicKey);
@@ -58,13 +51,6 @@ namespace Sodium.IdentityModel.Tokens.Tests
         {
             var key = SodiumSecurityKey.FromPrivateKey(PrivateKey);
             CollectionAssert.AreEqual(PrivateKey, key.PrivateKey);
-        }
-
-        [Test]
-        public void FromPrivateKey_Sets_CurveToEd25519()
-        {
-            var key = SodiumSecurityKey.FromPrivateKey(PrivateKey);
-            Assert.AreEqual(SodiumAlgorithms.Ed25519, key.Curve);
         }
 
         [Test]

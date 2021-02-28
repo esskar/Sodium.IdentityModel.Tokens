@@ -50,8 +50,6 @@ namespace Sodium.IdentityModel.Tokens
             PublicKey = publicKey;
         }
 
-        public string Curve => SodiumAlgorithms.Ed25519;
-
         public byte[] PublicKey { get; }
 
         internal byte[]? PrivateKey { get; private set; }
